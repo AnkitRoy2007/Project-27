@@ -1,13 +1,13 @@
-class Bob{
+lass Bob{
     constructor(x,y,r){
         var options = {
           isStatic: false,
-          density: 8,
-          friction : 2,
-          restitutuion:0.9
+          density: 7.8,
+          friction : 0,
+          restitutuion:1
         }
         this.body = Bodies.circle(x,y,r,options);
-        this.r = r/2;
+        this.r = r;
         World.add(world,this.body);
     }
     display(){
