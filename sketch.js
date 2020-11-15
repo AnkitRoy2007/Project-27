@@ -18,19 +18,25 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	Bob1 = new Bob(width/2,height-300,60);
-	Bob2 = new Bob(710,height-300,60);
-	Bob3 = new Bob(650,height-300,60);
-	Bob4 = new Bob(830,height-300,60);
-	Bob5 = new Bob(890,height-300,60);
-	
-	roof = new Roof(width/2,height-550,330,40);
-
-	rope1 = new Chain(Bob3.body,roof.body,-140,0);
-
-  rope2 = new Chain(Bob2.body,roof.body,-120,0);
+  Bob1 = new Bob(width/2,height-300,30);
   
-  //rope3 = new Chain(Bob1.body,roof.body,-100,0);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+  Bob2 = new Bob(width/2-60,height-300,30);
+  
+  Bob3 = new Bob(width/2-120,height-300,30);
+
+  Bob4 = new Bob(width/2+60,height-300,30);
+  
+	Bob5 = new Bob(width/2+120,height-300,30);
+	
+	roof = new Roof(width/2,height-550,300,40);
+
+	rope1 = new Chain(Bob3.body,roof.body,-120,0);
+
+  rope2 = new Chain(Bob2.body,roof.body,-60,0);
+  
+  rope3 = new Chain(Bob1.body,roof.body,0,0);   
+  rope4 = new Chain(Bob4.body,roof.body,60,0);
+  rope5 = new Chain(Bob5.body,roof.body,120,0);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 	Engine.run(engine);
   
 }
@@ -38,9 +44,8 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background(255);
-  console.log(rope1.offsetX);
-  
+  background(55);
+
   Bob1.display();
   Bob2.display();
   Bob3.display();
@@ -50,8 +55,20 @@ function draw() {
   roof.display();
   rope1.display();
   rope2.display();
+  rope3.display();
+  rope4.display();
+  rope5.display();
+
   drawSprites();
+  keyPressed();
+
   text (mouseX+" , "+mouseY,mouseX,mouseY);
+}
+
+function keyPressed() {
+  if(keyCode === 32) {
+    Matter.Body.applyForce(Bob3.body,Bob3.body.position,{x:-730,y: 0});
+  }
 }
 
 
